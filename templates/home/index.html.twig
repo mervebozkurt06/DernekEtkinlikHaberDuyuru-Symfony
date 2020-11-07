@@ -1,0 +1,138 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}{{ setting[0].title }}{% endblock %}
+{% block keywords %}{{ setting[0].keywords }}{% endblock %}
+{% block description %}{{ setting[0].description }}{% endblock %}
+
+{% block slider %} {% include ('home/slider.html.twig') %}{% endblock %}
+
+
+
+{% block body %}
+
+    <!--planning-->
+    <div class="wrap planning">
+        <div class="container">
+
+            <div class="row">
+                <div class="span12">
+                    <h2 class="title">Duyurular</h2>
+                    <ul id="newscarousel" class="jcarousel-skin-tango">
+                        {% for rs in duyurucontents %}
+                            <li>
+                                {#<div class="news_date">15 apr<span>2019</span></div>#}
+                                <div class="news_t"><a href="{{ path('content_show', {'id': rs.id}) }}"> {{ rs.title }}</a></div>
+                                {# <div class="news">Posted by <a href="#">Anna Smith</a>  /  In <a href="#">City</a><br/>Tags: <a href="#">eget</a>, <a href="#">mauris</a></div>#}
+                                <div class="news_info">{{ rs.detail | raw }} <a href="{{ path('content_show', {'id': rs.id}) }}">Read more...</a></div>
+                                <div class="clear"></div>
+                            </li>
+
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--//planning-->
+
+    <!--Welcome-->
+    <div class="wrap block">
+        <div class="container welcome_block">
+            <div class="welcome_line welcome_t"></div>
+            TÜRKIYE MODA TASARIM SEKTÖRÜNÜN, DÜNYA MODA AKIMLARININ OLUŞUMUNDA<span>BELIRLEYICI BIR “EKOL” HALINE GELMESI VIZYONUYLA YOLA ÇIKTIK!</span>
+            <div class="welcome_line welcome_b"></div>
+        </div>
+    </div>
+    <!--//Welcome-->
+
+    <!--featured works-->
+    <div class="wrap block carousel_block">
+        <div class="container">
+            <h2 class="upper">Icerikler</h2>
+            <div class="row">
+
+                <div class="span12">
+                    <ul id="mycarousel" class="jcarousel-skin-tango">
+                        {% for content in contents %}
+                            <li>
+                                <div class="hover_img">
+                                    <a href="{{ path('content_show', {'id': content.id}) }}">
+                                        <img src="{{ asset('uploads/images/'~ content.image) }}" style="width: 300px;height: 300px" alt=""/>
+                                        <span class="portfolio_zoom1" style="height:610px; width: 720px; "></span>
+                                    </a>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--//featured works-->
+
+    <!--Latest news-->
+    <div class="wrap block">
+        <div class="container">
+
+            <div class="row news_block">
+
+                <div class="span12">
+                    <h2 class="title">Haberler</h2>
+                    <ul id="newscarousel" class="jcarousel-skin-tango">
+                        {% for rs in habercontents %}
+
+
+                            <li>
+                                {#<div class="news_date">15 apr<span>2019</span></div>#}
+                                <div class="news_t"><a href="{{ path('content_show', {'id': rs.id}) }}"> {{ rs.title }}</a></div>
+                                {# <div class="news">Posted by <a href="#">Anna Smith</a>  /  In <a href="#">City</a><br/>Tags: <a href="#">eget</a>, <a href="#">mauris</a></div>#}
+                                <div class="news_info">{{ rs.detail | raw }} <a href="{{ path('content_show', {'id': rs.id}) }}">Read more...</a></div>
+                                <div class="clear"></div>
+                            </li>
+
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Latest news-->
+
+    <!--latest posts-->
+    <div class="wrap block carousel_block">
+        <div class="container">
+            <h2 class="upper">Etkinlikler</h2>
+            <div class="row">
+                <div class="span12">
+
+                    <ul id="mycarousel2" class="jcarousel-skin-tango">
+                        {% for rs in etkinlikcontents %}
+
+                            <li>
+
+
+
+                                <div class="post_carousel">
+                                    <img src="{{asset('uploads/images/'~ rs.image)}}" style="width:300px;height:300px " alt="" />
+                                    <div class="title_t"><a href="{{ path('content_show', {'id': rs.id}) }}">{{ rs.title }}</a></div>
+                                    <div class="post_meta">
+                                        Posted by <a href="#">John Doe</a>  /  15 apr  / In <a href="#">Vacation</a>
+                                    </div>
+                                    {{ rs.detail |raw }} <a href="{{ path('content_show', {'id': rs.id}) }}" class="arrow_link">Read more...</a>
+                                </div>
+
+                            </li>
+
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--//latest posts-->
+    </div>
+    <!--//page_container-->
+
+
+{% endblock %}

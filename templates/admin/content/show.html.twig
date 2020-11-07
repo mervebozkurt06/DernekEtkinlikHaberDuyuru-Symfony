@@ -1,0 +1,107 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Content{% endblock %}
+
+{% block body %}
+<div class="dashboard-wrapper">
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="card">
+                    <h3 class="card-header">Create New Content</h3>
+                    <div class="card-body">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                            <h1>Content</h1>
+
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <th>Id</th>
+                                    <td>{{ content.id }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Title</th>
+                                    <td>{{ content.title }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Keywords</th>
+                                    <td>{{ content.keywords }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Description</th>
+                                    <td>{{ content.description }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Image</th>
+                                    <td><img src="{{ asset('uploads/images/'~ content.image) }}" height="100"></td>
+                                </tr>
+                                <tr>
+                                    <th>Type</th>
+                                    <td>{{ content.type }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Status</th>
+                                    <td>{{ content.status }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Created_at</th>
+                                    <td>{{ content.createdAt ? content.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Updated_at</th>
+                                    <td>{{ content.updatedAt ? content.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+
+                            <div class="btn btn-rounded btn-dark">
+                                <a href="{{ path('admin_content_index') }}">Back To List</a>
+                            </div>
+                            <div class="btn btn-rounded btn-secondary">
+                                <a href="{{ path('admin_content_edit', {'id': content.id}) }}">Edit</a>
+                            </div>
+
+                            <div >
+                                {{ include('admin/content/_delete_form.html.twig') }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+
+            </div>
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <div class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            <div class="text-md-right footer-links d-none d-sm-block">
+                                <a href="javascript: void(0);">About</a>
+                                <a href="javascript: void(0);">Support</a>
+                                <a href="javascript: void(0);">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end footer -->
+            <!-- ============================================================== -->
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end main wrapper -->
+    <!-- ============================================================== -->
+    <!-- Optional JavaScript -->
+    <script src={{ asset('assets') }}/admin/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src={{ asset('assets') }}/admin/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src={{ asset('assets') }}/admin/assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src={{ asset('assets') }}/admin/assets/libs/js/main-js.js"></script>
+    {% endblock %}

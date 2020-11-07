@@ -1,0 +1,66 @@
+<div class="card">
+    <h5 class="card-header">Horizontal Form</h5>
+    <div class="card-body">
+        <form name="category" id="form" data-parsley-validate=""  novalidate="" method="post">
+
+            <div class="form-group row" >
+                <label for="inputEmail2" class="col-3 col-lg-2 col-form-label text-right">Parent</label>
+                <div class="col-9 col-lg-10">
+                <select id="category_parentid" type="number" name="category[parentid]"    class="form-control">
+
+                    <option value="0"> Main Category</option>
+                    {% for cat in categories %}
+                        <option value="{{ cat.id }}" {{ cat.id==category.parentid?'Selected':'' }}> {{ cat.title }}</option>
+                    {% endfor %}
+                </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="inputPassword2" class="col-3 col-lg-2 col-form-label text-right">Category Name</label>
+                <div class="col-9 col-lg-10">
+                    <input  type="text" id="content_title" name="category[title]" value="{{ category.title }}" required="" placeholder="Category Name" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="inputPassword2" class="col-3 col-lg-2 col-form-label text-right">Description</label>
+                <div class="col-9 col-lg-10">
+                    <input  type="text" id="content_description" name="category[description]" required="" value="{{ category.description }}" placeholder="Description" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="inputPassword2" class="col-3 col-lg-2 col-form-label text-right">Keywords</label>
+                <div class="col-9 col-lg-10">
+                    <input  type="text" id="content_keywords" name="category[keywords]" required="" value="{{ category.keywords }}" placeholder="Keywords" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="inputPassword2" class="col-3 col-lg-2 col-form-label text-right">Status</label>
+                <div class="col-9 col-lg-10">
+                <select id="content_status"  name="category[status]" class="form-control">
+                    <option>{{ category.status }}</option>
+                    <option> True </option>
+                    <option> False </option>
+                </select>
+                </div>
+            </div>
+
+
+
+            <div class="row pt-2 pt-sm-5 mt-1">
+
+
+                <div class="col-sm-6 pl-0">
+                    <p class="text-right">
+                        <button type="submit" class="btn btn-space btn-primary">Submit</button>
+                        <button class="btn btn-space btn-secondary">Cancel</button>
+                    </p>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

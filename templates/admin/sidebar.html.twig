@@ -1,0 +1,63 @@
+<!-- left sidebar -->
+<!-- ============================================================== -->
+<div class="nav-left-sidebar sidebar-dark">
+    <div class="menu-list">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav flex-column">
+                    <li class="nav-divider">
+                        Dernek Admin
+                    </li>
+                    <li class="nav-divider">
+                        <img src="{{ asset('uploads/images/'~app.user.image) }}" class="img-circle mdi-elevation-decline" height="60" alt="User Image">
+                        <a href="/admin" class="d-block" height="40" >{{ app.user.name }}{{ app.user.surname }}</a>
+                        <a href="{{ path('app_logout') }}" height="20" > Log Out</a>
+                    </li>
+
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/category" ><i class="fas fa-fw fa-table"></i>Category</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/content"><i class="fas fa-fw fa-book"></i>Content</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/user"><i class="fas fa-fw fa-users"></i>Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/messages"><i class="fas fa-fw fa-comment"></i>Form Messages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/comment"><i class="fas fa-fw fa-user"></i>User Comments</a>
+                    </li>
+
+
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-10" aria-controls="submenu-10"><i class="fas fa-f fa-folder"></i>General</a>
+                        <div id="submenu-10" class="collapse submenu" style="">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ path('setting_index') }}">Settings</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- end left sidebar -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->

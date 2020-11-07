@@ -1,0 +1,75 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}{{ app.user.name }} Profile {% endblock %}
+
+{% block body %}
+    <div class="page_container">
+        <div class="breadcrumb">
+            <div class="wrap">
+                <div class="container">
+                    <a href="index.html">Home</a><span>/</span>Blog
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="wrap">
+            <div class="container">
+                <section>
+                    <div class="row">
+                        <div class="span8">
+                            <div class="post">
+                                <h2 class="title"><span><a href="blog_post.html">User Comments</a></span></h2>
+
+
+
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Subject</th>
+                                        <th>Comment</th>
+                                        <th>Status</th>
+                                        <th>Content</th>
+                                        {#<th>Created_at</th>
+                                    <th>Updated_at</th>#}
+                                        <th>Rate</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for comment in comments %}
+                                        <tr>
+                                            <td>{{ comment.subject }}</td>
+                                            <td>{{ comment.comment }}</td>
+                                            <td>{{ comment.status }}</td>
+                                            <td><a href="{{ path('content_show', {'id': comment.contentid}) }}">{{ comment.title }}</a></td>
+                                            {#<td>{{ comment.created_at }}</td>
+
+                                            <td>{{ comment.updatedAt ? comment.updatedAt|date('Y-m-d H:i:s') : '' }}</td>#}
+                                            <td>{{ comment.rate }}</td>
+                                            <td>
+                                                <a class="btn-danger" href="{{ path('user_edit', {'id': app.user.id}) }}">Delete</a>
+
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="10">no records found</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+
+
+
+                            </div>
+                        </div>
+
+                        {{ include('user/usermenu.html.twig') }}
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}

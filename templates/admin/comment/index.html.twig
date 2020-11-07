@@ -1,0 +1,92 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Admin Page{% endblock %}
+
+{% block body %}
+    <!-- wrapper  -->
+    <!-- ============================================================== -->
+    <div class="dashboard-wrapper">
+        <div class="container-fluid dashboard-content">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="card">
+                        <h5 class="card-header">Comment List</h5>
+                        <div class="card-body">
+
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Subject</th>
+                                    <th>Comment</th>
+                                    <th>Status</th>
+                                    <th>Ip</th>
+                                    <th>User</th>
+                                    <th>Content</th>
+
+                                    <th>Rate</th>
+                                    <th>actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for comment in comments %}
+                                    <tr>
+                                        <td>{{ comment.id }}</td>
+                                        <td>{{ comment.subject }}</td>
+                                        <td>{{ comment.comment }}</td>
+                                        <td>{{ comment.status }}</td>
+                                        <td>{{ comment.ip }}</td>
+                                        <td><a href="{{ path('admin_user_show', {'id': comment.id}) }}"> {{ comment.name }} {{ comment.surname }}</a></td>
+                                        <td><a href="{{ path('admin_content_show', {'id': comment.id}) }}">{{ comment.title }}</a></td>
+
+                                        <td>{{ comment.rate }}</td>
+                                        <td>
+                                            <a href="{{ path('admin_comment_show', {'id': comment.id}) }}" class="badge badge-pill badge-info" >Show</a>
+                                            <a href="{{ path('admin_comment_edit', {'id': comment.id}) }}" class="badge badge-pill badge-secondary" >Edit</a>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="10">no records found</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <div class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            <div class="text-md-right footer-links d-none d-sm-block">
+                                <a href="javascript: void(0);">About</a>
+                                <a href="javascript: void(0);">Support</a>
+                                <a href="javascript: void(0);">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end footer -->
+            <!-- ============================================================== -->
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end main wrapper -->
+    <!-- ============================================================== -->
+    <!-- Optional JavaScript -->
+    <script src={{ asset('assets') }}/admin/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src={{ asset('assets') }}/admin/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src={{ asset('assets') }}/admin/assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src={{ asset('assets') }}/admin/assets/libs/js/main-js.js"></script>
+
+{% endblock %}

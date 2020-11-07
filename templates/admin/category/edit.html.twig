@@ -1,0 +1,39 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Edit Category{% endblock %}
+
+{% block body %}
+<!-- wrapper  -->
+<!-- ============================================================== -->
+<div class="dashboard-wrapper">
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+
+            <h1>Edit Category</h1>
+
+    {{ include('admin/category/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('admin_category_index') }}">back to list</a>
+
+    {{ include('admin/category/_delete_form.html.twig') }}
+
+
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+
+    <!-- ============================================================== -->
+</div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end main wrapper -->
+    <!-- ============================================================== -->
+    <!-- Optional JavaScript -->
+    <script src={{ asset('assets') }}/admin/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src={{ asset('assets') }}/admin/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src={{ asset('assets') }}/admin/assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src={{ asset('assets') }}/admin/assets/libs/js/main-js.js"></script>
+{% endblock %}

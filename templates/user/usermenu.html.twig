@@ -1,0 +1,33 @@
+<div class="span4">
+    <div class="sidebar">
+
+        <div class="widget">
+            <img src="{{ asset('uploads/images/'~app.user.image) }}" class="img-circle mdi-elevation-decline" style="height: 80px" alt="User Image">
+            {{ app.user.name }} {{ app.user.surname }}
+            <h2 class="title"><span>User Menu</span></h2>
+            <ul class="recent_post">
+                <li>
+                    <div><a href="/user">My Profile </a></div>
+                    <div class="clear"></div>
+                </li>
+                <li>
+                    <div><a href="/user/content">My Contents</a></div>
+                    <div class="clear"></div>
+                </li>
+                <li>
+                    <div><a href="/user/comments">My Comments</a></div>
+                    <div class="clear"></div>
+                </li>
+            </ul>
+            <p><a href="/logout" class="arrow_link">Go to the logout</a></p>
+        </div>
+
+        <div class="widget">
+            <form class="form-search">
+                <input type="text" class="input-medium search-query">
+                <button type="submit" class="btn dark_btn">Search</button>
+            </form>
+        </div>
+
+    </div>
+</div>

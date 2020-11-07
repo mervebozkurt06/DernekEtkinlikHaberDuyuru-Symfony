@@ -1,0 +1,17 @@
+<!--slider-->
+<div id="main_slider">
+    <div class="camera_wrap" id="camera_wrap_1">
+
+        {% for rs in slider %}
+            <div data-src="{{ asset('uploads/images/'~ rs.image) }}" style="height: 690px; width:1920px" data-link="{{ path('content_show', {'id': rs.id}) }}" >
+
+
+
+            </div>
+
+        {% endfor %}
+
+    </div><!-- #camera_wrap_1 -->
+    <div class="clear"></div>
+</div>
+<!--//slider-->

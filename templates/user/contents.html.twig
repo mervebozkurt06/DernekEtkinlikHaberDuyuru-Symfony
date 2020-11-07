@@ -1,0 +1,46 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}{{ app.user.name }} Profile {% endblock %}
+
+{% block body %}
+    <div class="page_container">
+        <div class="breadcrumb">
+            <div class="wrap">
+                <div class="container">
+                    <a href="index.html">Home</a><span>/</span>Blog
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="wrap">
+            <div class="container">
+                <section>
+                    <div class="row">
+                        <div class="span8">
+                            <div class="post">
+                                <h2 class="title"><span><a href="blog_post.html">User Comments</a></span></h2>
+
+                                <div class="post_info">
+                                    <div class="fleft">On <span>12 Nov 2020</span> / By <a href="#">John Smith</a> / Tags <a href="#">Works</a>, <a href="#">Personal</a></div>
+
+                                </div>
+
+
+
+
+                                User Comments
+
+
+
+                            </div>
+                        </div>
+
+                        {{ include('user/usermenu.html.twig') }}
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,111 @@
+
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Show User{% endblock %}
+
+{% block body %}
+
+
+    <div class="dashboard-wrapper">
+        <div class="container-fluid dashboard-content">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="card">
+                        <h5 class="card-header">Show User</h5>
+                        <div class="card-body">
+
+
+
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <th>Id</th>
+                                    <td>{{ user.id }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Email</th>
+                                    <td>{{ user.email }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Roles</th>
+                                    <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Password</th>
+                                    <td>{{ user.password }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Name</th>
+                                    <td>{{ user.name }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Surname</th>
+                                    <td>{{ user.surname }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Image</th>
+                                    <td><img src="{{ asset('uploads/images/'~ user.image) }}" height="100"></td>
+                                </tr>
+                                <tr>
+                                    <th>Status</th>
+                                    <td>{{ user.status }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Created_at</th>
+                                    <td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Updated_at</th>
+                                    <td>{{ user.updatedAt ? user.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+
+
+                            <a href="{{ path('admin_user_edit', {'id': user.id}) }}">Edit</a>
+
+                            {{ include('admin/user/_delete_form.html.twig') }}
+                            <a href="{{ path('admin_user_index') }}">Back to List</a>
+
+
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <div class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            <div class="text-md-right footer-links d-none d-sm-block">
+                                <a href="javascript: void(0);">About</a>
+                                <a href="javascript: void(0);">Support</a>
+                                <a href="javascript: void(0);">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end footer -->
+            <!-- ============================================================== -->
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end main wrapper -->
+    <!-- ============================================================== -->
+    <!-- Optional JavaScript -->
+    <script src={{ asset('assets') }}/admin/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src={{ asset('assets') }}/admin/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src={{ asset('assets') }}/admin/assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src={{ asset('assets') }}/admin/assets/libs/js/main-js.js"></script>
+{% endblock %}

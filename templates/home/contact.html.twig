@@ -1,0 +1,66 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %} Contact Us | {{ setting[0].title }}{% endblock %}
+{% block keywords %}{{ setting[0].keywords }}{% endblock %}
+{% block description %}{{ setting[0].description }}{% endblock %}
+
+{% block body %}
+
+    <!--page_container-->
+    <div class="page_container">
+        <div class="breadcrumb">
+            <div class="wrap">
+                <div class="container">
+                    <a href="/">Home</a><span>/</span>Contact Us
+                </div>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="container">
+                <section>
+                    <div class="row">
+
+                        <div class="span4">
+                            <h2 class="title"><span>Get In Touch</span></h2>
+                            <div class="contact_form">
+                                <div id="note"></div>
+                                <div id="fields">
+
+                                    {{ include('messages.html.twig') }}
+                                    <form name="messages" id="ajax-contact-form" method="post">
+                                        <input class="span4" type="text" id="messages_name" name="messages[name]" value="" placeholder="Name" />
+                                        <input class="span4" type="text" id="messages_email" name="messages[email]" value="" placeholder="Email" />
+                                        <input class="span4" type="text" id="messages_subject" name="messages[subject]" value="" placeholder="Subject" />
+                                        <textarea id="messages_message" name="messages[message]" class="span4" placeholder="Message"></textarea>
+
+                                        <div class="clear"></div>
+                                        <input type="reset" class="btn dark_btn" value="Clear form" />
+                                        <input type="hidden"  name="token" value="{{ csrf_token('form-message') }}" />
+                                        <input type="submit" class="btn send_btn" value="Submit" />
+                                        <div class="clear"></div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="span8">
+                            <h2 class="title"><span>Contact Information</span></h2>
+
+                            {{ setting[0].contact|raw }}
+                            <div class="follow_us">
+                                <h2><p>Follow us on social media!</p></h2>
+                                <ul>
+                                    <li><a rel="tooltip" href="{{ setting[0].facebook }}" title="Facebook" class="facebook">Facebook</a></li>
+                                    <li><a rel="tooltip" href="{{ setting[0].twitter }}" title="Twitter" class="twitter">Twitter</a></li>
+                                    <li><a rel="tooltip" href="{{ setting[0].instagram }}" title="Instagram" class="tumbrl">Instagram</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!--//page_container-->
+
+{% endblock %}

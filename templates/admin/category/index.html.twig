@@ -1,0 +1,74 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Category Home Page{% endblock %}
+
+{% block body %}
+<!-- wrapper  -->
+<!-- ============================================================== -->
+<div class="dashboard-wrapper">
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="card">
+                    <h5 class="card-header">Category List</h5>
+                    <div class="card-body">
+
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Parentid</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Keywords</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Status</th>
+
+                                <th>actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for category in categories %}
+                                <tr>
+                                    <td>{{ category.id }}</td>
+                                    <td>{{ category.parentid }}</td>
+                                    <td>{{ category.title }}</td>
+                                    <td>{{ category.keywords }}</td>
+                                    <td>{{ category.description }}</td>
+                                    <td>{{ category.image }}</td>
+                                    <td>{{ category.status }}</td>
+
+                                    <td>
+                                        <a href="{{ path('admin_category_show', {'id': category.id}) }}" class="badge badge-pill badge-info">Show</a>
+                                        <a href="{{ path('admin_category_edit', {'id': category.id}) }}" class="badge badge-pill badge-secondary">Edit</a>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="10">no records found</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                        <a href="{{ path('admin_category_new') }}" class="btn btn-success active">Create New</a>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- end main wrapper -->
+        <!-- ============================================================== -->
+        <!-- Optional JavaScript -->
+        <script src={{ asset('assets') }}/admin/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+        <script src={{ asset('assets') }}/admin/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+        <script src={{ asset('assets') }}/admin/assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+        <script src={{ asset('assets') }}/admin/assets/libs/js/main-js.js"></script>
+        {% endblock %}

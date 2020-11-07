@@ -1,0 +1,167 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}{{ content.title }} {% endblock %}
+{% block keywords %}{{ content.keywords }} {% endblock %}
+{% block description %}{{ content.description }} {% endblock %}
+
+{% block body %}
+    <div class="page_container">
+        <div class="breadcrumb">
+            <div class="wrap">
+                <div class="container">
+                    <a href="/user/content">Content</a><span>/</span>{{ content.title }}
+                </div>
+            </div>
+        </div>
+
+        <div class="wrap block">
+            <div class="container">
+                <section>
+                    <div class="row news_block">
+                        <div class="span6">
+
+                            <ul id="mycarousel" class="jcarousel-skin-tango">
+
+                                <li>
+                                    <div class="hover_img">
+                                        <a href="{{ asset('uploads/images/'~ content.image) }}" rel="{{ asset('uploads/images/'~ content.image) }}">
+                                            <img src="{{ asset('uploads/images/'~ content.image) }}"  alt=""/>
+                                            {{ content.title }}
+                                            <span class="portfolio_zoom1" style="height:300px; width: 300px; "></span>
+                                        </a>
+                                    </div>
+                                </li>
+
+
+                                {% for rs in images %}
+                                    <li>
+                                        <div class="hover_img">
+                                            <a href="{{ asset('uploads/images/'~ rs.image) }}" rel="{{ asset('uploads/images/'~ rs.image) }}">
+                                                <img src="{{ asset('uploads/images/'~ rs.image) }}" style="width: 300px;height: 300px" alt=""/>
+                                                {{ rs.title }}
+                                                <span class="portfolio_zoom1"  ></span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+
+
+                        </div>
+                        <div class="span5">
+
+
+                            <div class="post">
+                                <h2 class="title">{{ content.title }} </h2>
+
+                                <table class="table">
+                                    <tbody>
+                                    {#<tr>
+                                        <th>Id</th>
+                                        <td>{{ content.id }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Keywords</th>
+                                        <td>{{ content.keywords }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Image</th>
+                                        <td>{{ content.image }}</td>
+                                    </tr>#}
+                                    <tr>
+                                        <th>Title</th>
+                                        <td>{{ content.title }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Keywords</th>
+                                        <td>{{ content.keywords }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Description</th>
+                                        <td>{{ content.description }}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th>Type</th>
+                                        <td>{{ content.type }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
+
+
+                            <div class="span12">
+                                <div class="well">
+                                    <div class="tabbable" style="margin-bottom: 9px;">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#1" data-toggle="tab">Contents</a></li>
+                                            <li class=""><a href="#2" data-toggle="tab">Content Detail Information</a></li>
+                                            <li class=""><a href="#3" data-toggle="tab">Comments</a></li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="1">
+                                                <p>About Contents</p>
+                                            </div>
+                                            <div class="tab-pane" id="2">
+                                                <p>{{ content.detail | raw }}</p>
+                                            </div>
+                                            <div class="tab-pane" id="3">
+
+                                                {% for rs in comments  %}
+                                                    <h6>{{ rs.subject }} [Rate:{{ rs.rate }}]</h6>
+                                                    <p>
+                                                        {{ rs.comment }}
+                                                    </p>
+                                                    <hr>
+                                                {% endfor %}
+
+
+                                                {% if app.user %}
+                                                    <h2 class="title"><span>Write comment</span></h2>
+
+                                                    {{ include('messages.html.twig') }}
+                                                    <form name="comment" action="{{ path('user_new_comment',{'id': content.id}) }}" id="ajax-contact-form" method="post" role="form">
+
+
+                                                        <input class="span1" type="text" id="comment_subject" name="comment[subject]" value="" placeholder="Subject" />
+                                                        <select id="comment_rate" name="comment[rate]" class="span1">
+                                                            <option>1</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                            <option>4</option>
+                                                            <option>5 </option>
+                                                        </select>
+                                                        <textarea id="comment_message" name="comment[comment]" class="span4" placeholder="Message"></textarea>
+
+                                                        <div class="clear"></div>
+                                                        <input type="reset" class="btn dark_btn" value="Delete" />
+                                                        <input type="hidden"  name="token" value="{{ csrf_token('comment') }}" />
+                                                        <input type="submit" class="btn send_btn" value="Send Comment" />
+                                                        <div class="clear"></div>
+                                                    </form>
+
+                                                {% else %}
+                                                    <li>
+                                                        <a href="/loginuser"><i class="icon-lock"></i> If you want to comment you should login...</a>
+                                                    </li>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                </section>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
